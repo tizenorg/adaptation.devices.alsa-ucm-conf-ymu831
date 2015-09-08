@@ -1,0 +1,261 @@
+# Use case Configuration for Wearable device
+# By Inha Song <ideal.song@samsung.com>
+
+SectionVerb {
+  EnableSequence [
+  ]
+  DisableSequence [
+  ]
+
+  Value {
+    TQ "Music"
+    PlaybackCTL "hw:0"
+    CaptureCTL "hw:0"
+  }
+}
+
+SectionDevice."MainMic" {
+  Comment "built-in main mic"
+
+  EnableSequence [
+# Gain
+    cset "name='Music Output Volume' 104,104"
+    cset "name='Voice Input Volume' 96,96"
+    cset "name='Voice Output Volume' 96,96"
+    cset "name='Voice Playback Volume' 75,75"
+    cset "name='Adif1 Input Volume' 104,104"
+    cset "name='Mic2 Volume' 60"
+    cset "name='Dummy Delay' 200"
+# Path
+    cset "name='Music Output Switch' 1,1"
+    cset "name='Voice Input Switch' 1,1"
+    cset "name='Voice Output Switch' 1,1"
+    cset "name='Voice Playback Switch' 1,1"
+    cset "name='Adif1 Input Switch' 1,1"
+    cset "name='Mic2 Switch' 1"
+    cset "name='ADIF1 Source' 1,2"
+    cset "name='Music Out0 Swap' 0"
+    cset "name='Input Path' 1"
+    cset "name='Audio Mode Capture' 1"
+  ]
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionDevice."Speaker" {
+  Comment "media-speaker"
+
+  EnableSequence [
+# Gain
+    cset "name='Music Input Volume' 96,96"
+    cset "name='Dac1 Output Volume' 96,96"
+    cset "name='Speaker Volume' 111,111"
+    cset "name='Master Playback Volume' 75,75"
+    cset "name='SP Gain' 0"
+# Path
+    cset "name='Output Path' 0"
+    cset "name='Music Input Switch' 1,1"
+    cset "name='Dac1 Output Switch' 1,1"
+    cset "name='Speaker Switch' 1,1"
+    cset "name='Dac1 Swap' 5"
+    cset "name='Audio Mode Playback' 1"
+    cset "name='Master Playback Switch' 1,1"
+  ]
+
+  DisableSequence [
+    cset "name='Music Input Switch' 0,0"
+    cset "name='Dac1 Output Switch' 0,0"
+    cset "name='Speaker Switch' 0,0"
+    cset "name='Dac1 Swap' 0"
+    cset "name='Audio Mode Playback' 0"
+    cset "name='Master Playback Switch' 0,0"
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."LoopbackSPK" {
+  Comment "loopback-speaker"
+
+  SupportedDevice [
+    "Speaker"
+  ]
+
+  EnableSequence [
+# Gain
+    cset "name='Voice Playback Volume' 75,75"
+    cset "name='Speaker Volume' 110,110"
+    cset "name='Ref Input Volume' 96,96"
+    cset "name='Ref Output Volume' 96,96"
+# Path
+    cset "name='Voice Playback Switch' 1,1"
+    cset "name='Ref Input Switch' 1,1"
+    cset "name='Ref Output Switch' 1,1"
+    cset "name='MainMIC Playback Path' 0"
+    cset "name='SubMIC Playback Path' 0"
+  ]
+
+  DisableSequence [
+    cset "name='Voice Playback Switch' 0,0"
+    cset "name='Ref Input Switch' 0,0"
+    cset "name='Ref Output Switch' 0,0"
+    cset "name='MainMIC Playback Path' 0"
+    cset "name='SubMIC Playback Path' 0"
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."FactorySPK" {
+  Comment "factory-speaker"
+
+  SupportedDevice [
+    "Speaker"
+  ]
+
+  EnableSequence [
+  ]
+
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."Camcording" {
+  Comment "camcording-mic"
+
+  SupportedDevice [
+    "MainMic"
+  ]
+
+  EnableSequence [
+    cset "name='Music Output Volume' 100,100"
+    cset "name='Adif1 Input Volume' 96,96"
+    cset "name='Mic2 Volume' 53"
+    cset "name='Dummy Delay' 200"
+  ]
+
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."VoiceRecord" {
+  Comment "voicerec-mic"
+
+  SupportedDevice [
+    "MainMic"
+  ]
+
+  EnableSequence [
+  ]
+
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."VoiceSearch" {
+  Comment "voicesearch-mic"
+
+  SupportedDevice [
+    "MainMic"
+  ]
+
+  EnableSequence [
+    cset "name='Music Output Volume' 96,96"
+    cset "name='Adif1 Input Volume' 96,96"
+    cset "name='Mic2 Volume' 56"
+    cset "name='Dummy Delay' 200"
+  ]
+
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."VoiceCommand" {
+  Comment "voicecommand-mic"
+
+  SupportedDevice [
+    "MainMic"
+  ]
+
+  EnableSequence [
+    cset "name='Music Output Volume' 96,96"
+    cset "name='Adif1 Input Volume' 96,96"
+    cset "name='Mic2 Volume' 56"
+    cset "name='Dummy Delay' 200"
+  ]
+
+  DisableSequence [
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
+
+SectionModifier."LoopbackMic" {
+  Comment "loopback-mainmic"
+
+  SupportedDevice [
+    "MainMic"
+  ]
+
+  EnableSequence [
+# Gain
+    cset "name='Music Output Volume' 96,96"
+    cset "name='Adif1 Input Volume' 96,96"
+    cset "name='Ref Output Volume' 96,96"
+    cset "name='Adif2 Input Volume' 96,96"
+    cset "name='Mic2 Volume' 55"
+    cset "name='Mic3 Volume' 55"
+    cset "name='Dummy Delay' 200"
+# Path
+    cset "name='Voice Playback Switch' 0,0"
+    cset "name='ADIF1 Source' 0,0"
+    cset "name='ADIF1 Swap' 0"
+    cset "name='Ref Output Switch' 1,1"
+    cset "name='Adif2 Input Switch' 1,1"
+    cset "name='Main Mic' 2"
+    cset "name='Sub Mic' 3"
+    cset "name='Mic3 Switch' 1"
+    cset "name='Input Path' 2"
+    cset "name='Audio Mode Capture' 5"
+  ]
+
+  DisableSequence [
+    cset "name='Ref Output Switch' 0,0"
+    cset "name='Adif2 Input Switch' 0,0"
+    cset "name='Main Mic' 0"
+    cset "name='Sub Mic' 0"
+    cset "name='Mic3 Switch' 0"
+    cset "name='Input Path' 0"
+    cset "name='Audio Mode Capture' 0"
+  ]
+
+  Value {
+    PlaybackPCM "hw:0,0"
+  }
+}
